@@ -2,6 +2,7 @@ import React from 'react'
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as GiIcons from "react-icons/gi";
+import * as RiIcons from "react-icons/ri";
 
 export const SidebarData = [
     {
@@ -38,6 +39,18 @@ export const SidebarData = [
         title: 'Creditworthiness',
         path: '/creditworthiness',
         icon: <GiIcons.GiMoneyStack />,
+        cName: 'nav-text'
+    },
+    {
+        title: 'Login',
+        path: '/login',
+        icon: <AiIcons.AiOutlineLogin />,
+        cName: 'nav-text'
+    },
+    {
+        title: 'Registration',
+        path: '/registration',
+        icon: <RiIcons.RiAccountCircleLine />,
         cName: 'nav-text'
     }
 ]

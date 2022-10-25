@@ -1,27 +1,37 @@
-import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import './App.css';
+import { Routes, Route } from "react-router-dom";
+import { UserAuthContextProvider } from "./context/userAuthContext";
+import "./App.css";
+import Home from "./Pages/Home";
+import Login from "./components/Login";
+import Registration from "./components/Registration";
 import Navbar from './components/Navbar';
-import Home from './Pages/Home';
+import PRoute from "./components/PRoutes";
 import History from './Pages/History';
 import Newexpense from './Pages/Newexpense';
 import Loan from './Pages/Loan';
 import Creditworthiness from './Pages/Creditworthiness';
 import Graphs from './Pages/Graphs';
+import LogRoute from "./components/LogRoute";
 
 function App() {
   return (
+    
     <>
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path='/' exact element={<Home/>} />
-        <Route path='/history' exact element={<History/>} />
-        <Route path='/new_expense' exact element={<Newexpense/>} />
-        <Route path='/loan' exact element={<Loan/>} />
-        <Route path='/creditworthiness' exact element={<Creditworthiness/>} />
-        <Route path='/graphs' exact element={<Graphs/>} />
-      </Routes>
-    </Router>
+
+          <UserAuthContextProvider>
+            <Navbar />
+            <Routes>
+              
+              <Route path="/" element={ <Home /> } />        
+              <Route path='/history' exact element={<PRoute> <History/> </PRoute>} />
+              <Route path='/new_expense' exact element={<PRoute> <Newexpense/> </PRoute>} />
+              <Route path='/loan' exact element={<PRoute> <Loan/> </PRoute>} />
+              <Route path='/creditworthiness' exact element={<PRoute> <Creditworthiness/> </PRoute>} />
+              <Route path='/graphs' exact element={<PRoute> <Graphs/> </PRoute>} />
+              <Route path="/login" element={<LogRoute><Login /></LogRoute>} />
+              <Route path="/registration" element={<LogRoute><Registration /></LogRoute>} />
+            </Routes>
+          </UserAuthContextProvider>
     </>
   );
 }

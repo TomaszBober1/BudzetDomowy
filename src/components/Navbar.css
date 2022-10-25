@@ -13,7 +13,7 @@
     font-size: 2rem;
     background: none;
   }
-  
+
   .nav-menu {
     background-color: #060b26;
     width: 250px;
@@ -69,15 +69,13 @@
     align-items: center;
   }
 
-  .login {
+  .logout {
     font-size: 2rem;
     background: none;
     margin-left: auto;
     
     
   }
-
-
 
   span {
     margin-left: 16px;
