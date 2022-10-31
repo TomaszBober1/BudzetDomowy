@@ -22,7 +22,7 @@ function App() {
             <Navbar />
             <Routes>
               
-              <Route path="/" element={ <Home /> } />        
+              <Route path="/home" element={ <Home /> } />        
               <Route path='/history' exact element={<PRoute> <History/> </PRoute>} />
               <Route path='/new_expense' exact element={<PRoute> <Newexpense/> </PRoute>} />
               <Route path='/loan' exact element={<PRoute> <Loan/> </PRoute>} />

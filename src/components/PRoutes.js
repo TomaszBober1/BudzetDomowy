@@ -8,6 +8,7 @@ const PRoute = ({ children }) => {
   if (!user) {
     return <Navigate to="/login" />;
   }
+  console.log(user.uid);
   return children;
 };
 

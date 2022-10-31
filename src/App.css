@@ -8,10 +8,30 @@
 
 }
 
-.home, .history, .newexpense, .graphs, .creditworthiness, .loan {
+.home, .history, .graphs, .creditworthiness, .loan {
   display: flex;
   height: 90vh;
   align-items: center;
   justify-content: center;
   font-size: 3rem;
+}
+
+.newexpense {
+  text-align: center;
+  display: block;
+  margin-top: 5%;
+  margin-left: 45%;
+}
+
+.newexpense_form {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+.inputEx {
+  min-width: fit-content;
+  max-width: 200px;
 }
