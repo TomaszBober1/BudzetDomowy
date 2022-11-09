@@ -8,7 +8,7 @@
 
 }
 
-.home, .history, .graphs, .creditworthiness, .loan {
+.home, .graphs, .creditworthiness, .loan {
   display: flex;
   height: 90vh;
   align-items: center;
@@ -35,3 +35,40 @@
   min-width: fit-content;
   max-width: 200px;
 }
+
+.history {
+  display: flexbox;
+  height: 90vh;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+}
+
+.dbData-f {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  max-width: 80%;
+  margin-left: 10%;
+  border-style: solid;
+  border-radius: 25px;
+  background-color: chartreuse;
+  }
+
+  .dbData-p {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    max-width: 80%;
+    margin-left: 10%;
+    border-radius: 25px;
+    border-style: solid;
+    }
+
+  .inputEx {
+    margin-top: 20px;
+    min-width: 250px;
+    max-width: 400px;
+    height: 40px;
+    font-size: 20px;
+    padding-left: 10px;
+    margin-left: 40%;
+  }
