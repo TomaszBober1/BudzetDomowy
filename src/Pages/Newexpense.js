@@ -3,7 +3,7 @@ import Switch from "react-switch";
 import { useUserAuth} from "../context/userAuthContext";
 import { db } from "../firebase-config";
 import { addDoc, collection } from 'firebase/firestore';
-
+import "../Styles.css";
 
 function Newexpense() {
    const [switchCheck, setSwitchCheck] = useState("Income");
@@ -38,6 +38,16 @@ function Newexpense() {
 
 const handleSubmit = (e) => {
   e.preventDefault();
+
+  if(expense.name === "" || expense.date === "" || expense.type === "" || expense.value === "" || expense.tag === ""){
+    alert("Every input must be filled!");
+    return;
+  }
+
+  if(expense.value <= 0){
+    alert("Value can't be negative!");
+    return;
+  }
 
   //TODO wysyłanie do bazy
   addDoc(firestoreConn, {

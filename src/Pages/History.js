@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { collection, query, onSnapshot } from "firebase/firestore";
 import { db } from "../firebase-config";
 import { useUserAuth } from "../context/userAuthContext";
+import '../Styles.css'
 
 function History() {
   const current = new Date();

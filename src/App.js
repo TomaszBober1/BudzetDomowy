@@ -1,6 +1,5 @@
 import { Routes, Route } from "react-router-dom";
 import { UserAuthContextProvider } from "./context/userAuthContext";
-import "./App.css";
 import Home from "./Pages/Home";
 import Login from "./components/Login";
 import Registration from "./components/Registration";
@@ -12,6 +11,7 @@ import Loan from './Pages/Loan';
 import Creditworthiness from './Pages/Creditworthiness';
 import Graphs from './Pages/Graphs';
 import LogRoute from "./components/LogRoute";
+import "./Styles.css";
 
 function App() {
   return (
