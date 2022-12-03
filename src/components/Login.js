@@ -36,10 +36,13 @@ const Login = () => {
   return (
     <>
       <div className="p-4 box">
-        <h2 className="mb-3">Home budget management</h2>
+        <h2 className="marginLogReg">Home budget management</h2>
+        
         {error && <Alert variant="danger">{error}</Alert>}
-        <Form onSubmit={handleSubmit}>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
+        
+          <Form onSubmit={handleSubmit}>
+            <div className="switch">
+          <Form.Group className="logReg" controlId="formBasicEmail">
             <Form.Control
               type="email"
               placeholder="Email address"
@@ -47,7 +50,7 @@ const Login = () => {
             />
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Group className="logReg" controlId="formBasicPassword">
             <Form.Control
               type="password"
               placeholder="Password"
@@ -56,19 +59,20 @@ const Login = () => {
           </Form.Group>
 
           <div className="d-grid gap-2">
-            <Button variant="primary" type="Submit">
+            <Button className="logReg" variant="primary" type="Submit">
               Log in
             </Button>
-          </div>
+          </div></div>
         </Form>
         <hr />
         <div>
+        <div className="switch">
           <GoogleButton
             className="g-btn"
             data-width="4200"
             type="dark"
             onClick={handleGoogleSignIn}
-          />
+          /></div>
         </div>
       </div>
       <div className="p-4 box mt-3 text-center">

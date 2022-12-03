@@ -11,6 +11,8 @@ function Newexpense() {
    const { user } = useUserAuth();
    const firestoreConn = collection(db, user.uid);
 
+   const exceptThisSymbols = ["e", "E", "+", "-", "."];
+
   const [expense, setExpense] = useState({
     name: "",
     date: "",
@@ -50,7 +52,7 @@ const handleSubmit = (e) => {
   }
 
   //TODO wysyłanie do bazy
-  addDoc(firestoreConn, {
+  addDoc(collection(db, user.uid), {
     name: expense.name,
     date: expense.date,
     type: expense.type,
@@ -72,20 +74,20 @@ const setType = e => {
   return (
       <div className='newexpense'>
         <form className='newexpense_form' onSubmit={handleSubmit} >
-          <label>Transaction name</label>
+          <label className='label'>Transaction name</label>
           <input className='inputEx' type="text" name="name" value={expense.name} onChange={handleChange}/>
           
-          <label>Date</label>
+          <label className='label'>Date</label>
           <input className='inputEx' type="date" name="date" value={expense.date} onChange={handleChange}/>
           
-          <label>Income/Outcome</label>
-          <Switch checked={switchCheckbool} onChange={ checkSwitch } name="type"/>
-
-          <label>Kwota</label>
-          <input className='inputEx' type="number" name="value" value={expense.value} onChange={handleChange}/>
+          <label className='label'>Value</label>
+          <input className='inputEx' type="number" name="value" value={expense.value} onChange={handleChange} onKeyDown={e => exceptThisSymbols.includes(e.key) && e.preventDefault()}/>
           
-          <label>Tag</label>
-          <input className='inputEx' type="text" name="tag" value={expense.tag} onChange={handleChange}/>
+          <label className='label'>Tag</label>
+          <input className='inputEx' type="text" name="tag" value={expense.tag} onChange={handleChange}/>          
+          
+          <label className='label'>Income/Outcome</label>
+          <Switch className='switch' checked={switchCheckbool} onChange={ checkSwitch } name="type"/>
           <></>
           <input className='inputEx' type="submit" value="Submit" />
         </form>

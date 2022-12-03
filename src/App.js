@@ -18,7 +18,7 @@ function App() {
     
     <>
 
-          <UserAuthContextProvider>
+          <UserAuthContextProvider >
             <Navbar />
             <Routes>
               

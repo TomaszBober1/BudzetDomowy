@@ -22,6 +22,8 @@
   margin-top: 5%;
   margin-left: 37%;
   margin-right: 5%;
+  margin-bottom: 0px;
+
 }
 
 .newexpense_form {
@@ -39,29 +41,36 @@
 
 .history {
   display: flexbox;
-  height: 90vh;
   align-items: center;
   justify-content: center;
-  font-size: 3rem;
+  color: #111; 
+  font-family: 'Helvetica Neue', sans-serif; 
+  font-size: 27px; 
+  font-weight: normal;
+  letter-spacing: -1px; 
+  line-height: 1;
 }
 
 .dbData-f {
-  margin-top: 15px;
+  margin-top: 25px;
   margin-bottom: 15px;
-  max-width: 80%;
-  margin-left: 10%;
-  border-style: solid;
+  max-width: 60%;
+  margin-left: 19%;
   border-radius: 25px;
+  border-style: groove;
   background-color: chartreuse;
+  box-shadow: 10px 5px 5px rgb(6, 78, 22);
   }
 
   .dbData-p {
-    margin-top: 15px;
+    margin-top: 25px;
     margin-bottom: 15px;
-    max-width: 80%;
-    margin-left: 10%;
+    max-width: 60%;
+    margin-left: 19%;
     border-radius: 25px;
     border-style: solid;
+    background-color: aquamarine;
+    box-shadow: 10px 5px 5px rgb(4, 4, 76);
     }
 
   .inputEx {
@@ -71,6 +80,7 @@
     height: 40px;
     font-size: 20px;
     padding-left: 10px;
+    margin-left: 10%;
   }
 
   .loanlabel {
@@ -85,4 +95,66 @@
     text-align: center;
     justify-content: center;
     font-size: 1.5rem;
+  }
+
+  .graph_input {
+    margin-top: 1.5cm;
+    margin-left: 40%;
+    display: flexbox;
+    height: 40px;
+    min-width: 200px;
+    max-width: 300px;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    font-size: 2rem;
+  }
+
+  .graph_button {
+    height: 45px;
+    display: flexbox;
+    min-width: 320px;
+    font-size: 2rem;
+    margin-left: 3%;
+  }
+
+  .graph_chart {
+    margin-top: 5%;
+    margin-left: 25%;
+    width: 1200px;
+    
+  }
+
+  .main {
+    background: #c8b7a6;
+    margin: 0px;
+    min-height: 100vh;
+    color: #111; 
+    font-family: 'Helvetica Neue', sans-serif; 
+    font-size: 27px; 
+    font-weight: normal;
+    letter-spacing: -1px; 
+    line-height: 1;
+  }
+
+  .label {
+    margin-top: 5mm;
+    margin-bottom: 1mm;
+  }
+
+  .switch {
+    margin-left: 40%;
+  }
+
+  .textbox {
+    margin-left: 5mm;
+  }
+
+  .marginLogReg {
+    margin-left: 37%;
+    margin-bottom: 1cm;
+  }
+  .logReg {
+    width: 350px;
+    margin-bottom: 5mm;
   }

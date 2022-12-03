@@ -26,10 +26,11 @@ const Registration = () => {
   return (
     <>
       <div className="p-4 box">
-        <h2 className="mb-3">Firebase Auth Register</h2>
+        <h2 className="marginLogReg">Create account for budget management app</h2>
         {error && <Alert variant="danger">{error}</Alert>}
+        <div className="switch">
         <Form onSubmit={handleSubmit}>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Group className="logReg" controlId="formBasicEmail">
             <Form.Control
               type="email"
               placeholder="Email address"
@@ -37,7 +38,7 @@ const Registration = () => {
             />
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Group className="logReg" controlId="formBasicPassword">
             <Form.Control
               type="password"
               placeholder="Password"
@@ -45,15 +46,16 @@ const Registration = () => {
             />
           </Form.Group>
 
-          <div className="d-grid gap-2">
-            <Button variant="primary" type="Submit">
+          <div className="logReg">
+            <Button className="logReg" variant="primary" type="Submit">
               SignUp
             </Button>
           </div>
         </Form>
       </div>
       <div className="p-4 box mt-3 text-center">
-        Already have an account? <Link to="/">Log In</Link>
+        Already have an account? <Link to="/login">Log In</Link>
+        </div>
       </div>
     </>
   );

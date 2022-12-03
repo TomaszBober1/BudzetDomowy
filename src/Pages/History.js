@@ -31,6 +31,7 @@ function History() {
       });
       setDbData(items);
       setLoading(false);
+      
     });
     return () => {
       unsub();
@@ -38,6 +39,7 @@ function History() {
 
 
   }, []);
+
 
   return (
     <div className='history'>
@@ -59,17 +61,17 @@ function History() {
        <div key={key}>
           { Date.parse(val.date) > Date.parse(date) ? 
             <div className={'dbData-f'} key={dbData.id}>
-              <h1>Date of payment: {val.date}</h1>
-              <h1>Name of transaction: {val.name}</h1>
+              <h1 className='textbox'>Date of payment: {val.date}</h1>
+              <h1 className='textbox'>Name of transaction: {val.name}</h1>
               {/* <h1>{val.tag}</h1> */}
-              <h1>{val.type}</h1>
-              <h1>Value: {val.value}</h1>
+              <h1 className='textbox'>{val.type}</h1>
+              <h1 className='textbox'>Value: {val.value}</h1>
             </div> : 
             <div className={'dbData-p'} key={dbData.id}>
-            <h1>Date of payment: {val.date}</h1>
-            <h1>Name of transaction: {val.name}</h1>
-            <h1>{val.type}</h1>
-            <h1>Value: {val.value}</h1>
+            <h1 className='textbox'>Date of payment: {val.date}</h1>
+            <h1 className='textbox'>Name of transaction: {val.name}</h1>
+            <h1 className='textbox'>{val.type}</h1>
+            <h1 className='textbox'>Value: {val.value}</h1>
           </div> }
         </div>
         </>
