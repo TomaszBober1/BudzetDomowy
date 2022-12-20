@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import '../Styles.css'
+import Select from 'react-select';
 
 function Creditworthiness() {
 
@@ -12,21 +13,63 @@ function Creditworthiness() {
     loansInstallments: "",
     peopleInHousehold: "",
     interest: "",
-    repeyTime: ""
+    repeyTime: "",
+    age: "",
+    children: "",
+    maritalStatus: ""
+    
   })
+  
+  const [childrenNumb, setChildrenNumb] = useState();
+  const [maritalStat, setMaritalStat] = useState();
+
+  const options = [
+    { value: "0", label: 'none' },
+    { value: "1", label: 'one' },
+    { value: "2", label: 'two' },
+    { value: "3", label: 'three' },
+    { value: "4", label: 'four' },
+    { value: "5", label: 'more' }
+  ]
+
+  const status = [
+    { value: "0", label: 'married' },
+    { value: "1", label: 'single' },
+    { value: "2", label: 'divorced' },
+    { value: "3", label: 'widow/er' },
+  ]
 
   const exceptThisSymbols = ["e", "E", "+", "-", "."];
   const exceptThisSymbolsWithoutComa = ["e", "E", "+", "-", ".", ","];
 
   const handleChange = (e) => {
-    const value = e.target.value;
-    setWorthParams({ ...worthParams, [e.target.name]: value })
+    setWorthParams({ ...worthParams, [e.target.name]: e.target.value })
+  }
+
+  const handleChangeChildren = (e) => {
+    setChildrenNumb(e);
+    setWorthParams({ ...worthParams, ["children"]: e.value });
+  }
+
+  const handleChangeStatus = (e) => {
+    setMaritalStat(e);
+    setWorthParams({ ...worthParams, ["maritalStatus"]: e.value });
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    if(worthParams.income === "" || worthParams.permanentLiabilities === "" || worthParams.interest === "" || worthParams.creditCardLimits === "" || worthParams.peopleInHousehold === "" || worthParams.loansInstallments === "" || worthParams.repeyTime === ""){
+    
+    if(worthParams.income === "" || 
+       worthParams.permanentLiabilities === "" || 
+       worthParams.interest === "" || 
+       worthParams.creditCardLimits === "" || 
+       worthParams.peopleInHousehold === "" || 
+       worthParams.loansInstallments === "" || 
+       worthParams.repeyTime === "" || 
+       worthParams.age === "" || 
+       worthParams.children == "" || 
+       worthParams.maritalStatus == ""){
       alert("Every input must be filled!");
       return;
     }
@@ -55,6 +98,8 @@ function Creditworthiness() {
       alert("Minimal interest must be greater than 2.0");
       return;
     }
+
+    if(worthParams.children == "")
   
     setCreditWorth(0);
         
@@ -70,6 +115,7 @@ function Creditworthiness() {
     y = y.toFixed(3);
 
     setCreditWorth(x);
+    console.log(childrenNumb, worthParams);
      //setWorthParams({income: "", permanentLiabilities: "", interest: "", repeyTime: ""})
   };
 
@@ -92,12 +138,24 @@ function Creditworthiness() {
 
           <label>credit card limits</label>
             <input className='inputEx' type="number" name="creditCardLimits" value={worthParams.creditCardLimits} onChange={handleChange} onKeyDown={e => exceptThisSymbols.includes(e.key) && e.preventDefault()}/>
+         
+
+          <label>marital status</label>
+            <Select className='inputEx' name="maritalStatus" value={maritalStat} onChange={(choice) => handleChangeStatus(choice)} options={status} />
+
+          <label>number of children</label>
+            <Select className='inputEx' name="children" value={childrenNumb} onChange={(choice) => handleChangeChildren(choice)} options={options} />
+
 
           <label>loansInstallments</label>
             <input className='inputEx' type="number" name="loansInstallments" value={worthParams.loansInstallments} onChange={handleChange} onKeyDown={e => exceptThisSymbols.includes(e.key) && e.preventDefault()}/>
 
           <label>people in household</label>
-            <input className='inputEx' type="number" name="peopleInHousehold" value={worthParams.peopleInHousehold} onChange={handleChange} onKeyDown={e => exceptThisSymbolsWithoutComa.includes(e.key) && e.preventDefault()}/>
+            <input className='inputEx' type="number" min={1} max={10} name="peopleInHousehold" value={worthParams.peopleInHousehold} onChange={handleChange} onKeyDown={e => exceptThisSymbolsWithoutComa.includes(e.key) && e.preventDefault()}/>
+
+          <label>age</label>
+            <input className='inputEx' type="number" min={18} max={100} name="age" value={worthParams.age} onChange={handleChange} onKeyDown={e => exceptThisSymbolsWithoutComa.includes(e.key) && e.preventDefault()}/>
+
 
           <input className='inputEx' type="submit" value="CALCULATE" />
 

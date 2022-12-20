@@ -158,3 +158,9 @@
     width: 350px;
     margin-bottom: 5mm;
   }
+
+  .inputExSubmit {
+    min-width: fit-content;
+    max-width: 200px;
+    margin-bottom: 2cm;
+  }
