@@ -36,6 +36,16 @@ function Loan() {
       alert("Minimal loan value is 100");
       return;
     }
+
+    if(loanParams.comission >= 25){
+      alert("Maximum comission is 25%");
+      return;
+    }
+
+    if(loanParams.interest >= 25){
+      alert("Maximum interest is 25%");
+      return;
+    }
   
     setInstallment(0);
     setTotal(0);
@@ -48,12 +58,14 @@ function Loan() {
     let x = loanParams.loanAmount/accumulator;
     let y = (x * loanParams.repeyTime) + (loanParams.loanAmount * loanParams.comission/100);
     
+    x = x + (loanParams.loanAmount * loanParams.comission)/ (100 * loanParams.repeyTime);
+    
     x = x.toFixed(3);
     y = y.toFixed(3);
 
     setInstallment(x);
     setTotal(y);
-    //setLoanParams({loanAmount: "", comission: "", interest: "", repeyTime: ""})
+   
   };
 
   return (
@@ -61,16 +73,16 @@ function Loan() {
        <div className='newexpense'>
         <form className='newexpense_form' onSubmit={handleSubmit} >
           <label>loan amount</label>
-          <input className='inputEx' type="number" name="loanAmount" value={loanParams.loanAmount} onChange={handleChange}/>
+          <input className='inputEx' type="number" placeholder='loan amount' name="loanAmount" value={loanParams.loanAmount} onChange={handleChange}/>
           
           <label>comission</label>
-          <input className='inputEx' type="number" name="comission" value={loanParams.comission} onChange={handleChange}/>
+          <input className='inputEx' type="number" placeholder='comission 0-25%' name="comission" value={loanParams.comission} onChange={handleChange}/>
           
           <label>interest</label>
-          <input className='inputEx' type="number" name="interest" value={loanParams.interest} onChange={handleChange}/>
+          <input className='inputEx' type="number" placeholder='interest 0-25%' name="interest" value={loanParams.interest} onChange={handleChange}/>
 
-          <label>repayment time (months)</label>
-          <input className='inputEx' type="number" name="repeyTime" value={loanParams.repeyTime} onChange={handleChange}/>
+          <label className='label_repeyment'>repayment time (months)</label>
+          <input className='inputEx' type="number" placeholder='repeyment in months' name="repeyTime" value={loanParams.repeyTime} onChange={handleChange}/>
           <input className='inputEx' type="submit" value="CALCULATE" />
           {installment !==0 && <label className='loanlabel'>Instalment: {installment}</label>}
           {total !==0 && <label className='loanlabel'>Total cost: {total}</label>}

@@ -25,8 +25,8 @@ function App() {
               <Route path="/home" element={ <Home /> } />        
               <Route path='/history' exact element={<PRoute> <History/> </PRoute>} />
               <Route path='/new_expense' exact element={<PRoute> <Newexpense/> </PRoute>} />
-              <Route path='/loan' exact element={<PRoute> <Loan/> </PRoute>} />
-              <Route path='/creditworthiness' exact element={<PRoute> <Creditworthiness/> </PRoute>} />
+              <Route path='/loan' exact element={<Loan/> } />
+              <Route path='/creditworthiness' exact element={ <Creditworthiness/> } />
               <Route path='/graphs' exact element={<PRoute> <Graphs/> </PRoute>} />
               <Route path="/login" element={<LogRoute><Login /></LogRoute>} />
               <Route path="/registration" element={<LogRoute><Registration /></LogRoute>} />

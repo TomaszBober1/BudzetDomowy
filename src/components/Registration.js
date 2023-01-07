@@ -8,6 +8,7 @@ const Registration = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const { registration } = useUserAuth();
   const navigate = useNavigate();
 
@@ -16,6 +17,10 @@ const Registration = () => {
     e.preventDefault();
     setError("");
     try {
+      if(password !== confirmPassword){
+        alert("Password does not match!");
+        return;
+      }
       await registration(email, password);
       navigate("/home");
     } catch (err) {
@@ -43,6 +48,14 @@ const Registration = () => {
               type="password"
               placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
+            />
+          </Form.Group>
+
+          <Form.Group className="logReg" controlId="formBasicConfirmPassword">
+            <Form.Control
+              type="password"
+              placeholder="Confirm password"
+              onChange={(e) => setConfirmPassword(e.target.value)}
             />
           </Form.Group>
 

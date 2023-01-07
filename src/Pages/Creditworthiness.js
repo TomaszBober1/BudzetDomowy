@@ -68,8 +68,8 @@ function Creditworthiness() {
        worthParams.loansInstallments === "" || 
        worthParams.repeyTime === "" || 
        worthParams.age === "" || 
-       worthParams.children == "" || 
-       worthParams.maritalStatus == ""){
+       worthParams.children === "" || 
+       worthParams.maritalStatus === ""){
       alert("Every input must be filled!");
       return;
     }
@@ -85,7 +85,7 @@ function Creditworthiness() {
     }
 
     if(worthParams.repeyTime < 1){
-      alert("Minimal repey time must be at least 1");
+      alert("Minimal repay time must be at least 1");
       return;
     }
 
@@ -99,24 +99,64 @@ function Creditworthiness() {
       return;
     }
 
-    if(worthParams.children == "")
+    if(worthParams.children === ""){
+      alert("Number of children is not set!")
+    }
   
     setCreditWorth(0);
-        
+    
+    let creditW = (worthParams.income - worthParams.permanentLiabilities - worthParams.loansInstallments - worthParams.creditCardLimits * 0.85 );
     let accumulator = 0;
     for(let i = 1; i <= worthParams.repeyTime; ++i) {
       accumulator += (1 + worthParams.interest/1200) ** (-i);
-  }
+      }
 
-    let x = worthParams.income/accumulator;
-    let y = (x * worthParams.repeyTime) + (worthParams.income * worthParams.permanentLiabilities/100);
-    
-    x = x.toFixed(3);
-    y = y.toFixed(3);
 
-    setCreditWorth(x);
-    console.log(childrenNumb, worthParams);
-     //setWorthParams({income: "", permanentLiabilities: "", interest: "", repeyTime: ""})
+
+    let x = creditW * accumulator * 1.06;
+  
+    if(worthParams.age > 65 && worthParams.age < 75){
+      
+    }else{ 
+      if(worthParams.repeyTime > (65 - worthParams.age) * 12){
+        x = x *( (65-worthParams.age)*12  /worthParams.repeyTime) + x * 0.8 *  ( (worthParams.repeyTime - (65-worthParams.age)*12) /worthParams.repeyTime);
+        
+    }}
+
+    if(worthParams.maritalStatus === '1' ){
+      x = x * 0.9;
+    }else{
+      if(worthParams.maritalStatus === '2' ){
+        x = x * 0.85;
+      }else{
+        if(worthParams.maritalStatus === '3' ){
+          x = x * 0.95;
+        }
+      }
+    }
+   
+    if(worthParams.children === '3'){
+        x = x * 0.96;
+    } else {
+      if(worthParams.children === '4' || worthParams.children === '0'){
+        x = x * 0.94;
+    } else{
+      if(worthParams.children === '5'){
+        x = x * 0.9;
+    } 
+    }}
+
+    x = x * ((100 -((worthParams.peopleInHousehold)*4))/100);
+
+    x = x.toFixed(2);
+   
+    if(x >= 100){
+        setCreditWorth(x);
+    } else {
+       setCreditWorth('-');
+    }
+   
+
   };
 
   return (
@@ -131,7 +171,7 @@ function Creditworthiness() {
             <input className='inputEx' type="number" name="permanentLiabilities" value={worthParams.permanentLiabilities} onChange={handleChange} onKeyDown={e => exceptThisSymbols.includes(e.key) && e.preventDefault()}/>
           
           <label>interest</label>
-            <input className='inputEx' type="number" name="interest" value={worthParams.interest} onChange={handleChange} onKeyDown={e => exceptThisSymbols.includes(e.key) && e.preventDefault()}/>
+            <input className='inputEx' type="number" min={2} max={15} name="interest" value={worthParams.interest} onChange={handleChange} onKeyDown={e => exceptThisSymbols.includes(e.key) && e.preventDefault()}/>
 
           <label>repayment time (months)</label>
             <input className='inputEx' type="number" name="repeyTime" value={worthParams.repeyTime} onChange={handleChange} onKeyDown={e => exceptThisSymbolsWithoutComa.includes(e.key) && e.preventDefault()}/>

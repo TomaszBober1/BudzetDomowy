@@ -37,8 +37,7 @@ function Chart(props) {
     },
     };
     
-    
-    //{/*data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),*/}
+  
     const data = {
     labels: props.labels,
     datasets: [
